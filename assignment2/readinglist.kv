@@ -1,0 +1,69 @@
+
+#:kivy 1.0.9
+
+<LeftPanel>:
+    title_input: title_input
+    author_input: author_input
+    length_input: length_input
+
+    orientation: 'vertical'
+    spacing: 5
+
+    Button:
+        text: 'List Required'
+        on_press: self.parent.parent.book_list_panel.refresh_books(False)
+    Button:
+        text: 'List Completed'
+        on_press: self.parent.parent.book_list_panel.refresh_books(True)
+    Label:
+        text: 'Add New Book...'
+    Label:
+        text: 'Title'
+    TextInput:
+        id: title_input
+        write_tab: False
+    Label:
+        text: 'Author'
+    TextInput:
+        id: author_input
+        write_tab: False
+    Label:
+        text: 'Pages'
+    TextInput:
+        id: length_input
+        write_tab: False
+    Button:
+        text: 'Add Item'
+        on_press: root.insert_book()
+    Button:
+        text: 'Clear'
+        on_press: root.clear_fields()
+
+<BookListPanel>
+    total_pages_label: total_pages_label
+    book_list_view: book_list_view
+    status_bar: status_bar
+
+    Label:
+        id: total_pages_label
+        text: root.total_pages_label_text
+        size_hint: 1, 0.1
+
+    ListView:
+        id: book_list_view
+        adapter: root.book_list_adapter
+
+    Label:
+        id: status_bar
+        text: root.status_bar_text
+        size_hint: 1, 0.1
+
+<MainWindow>:
+    left_panel: left_panel
+    book_list_panel: book_list_panel
+
+    LeftPanel:
+        id: left_panel
+        size_hint: 0.25, 1
+    BookListPanel
+        id: book_list_panel
