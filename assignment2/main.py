@@ -15,7 +15,7 @@ Users can add new books and mark books as completed.
 -the user can add a new book by entering text in the input fields and clicking “Add Book”
 
 
-GitHub URL:
+GitHub URL: https://github.com/anumulaphani/practicals-1/tree/master/assignment2
 """
 
 from kivy.uix.boxlayout import BoxLayout
